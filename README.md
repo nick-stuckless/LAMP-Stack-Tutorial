@@ -32,15 +32,21 @@ Before starting, ensure you have:
 1. Update the Server
 
 bash
+
 sudo su root
+
 apt-get update
+
 apt-get upgrade
+
 reboot
 
 2. Install PHP
 
 bash
+
 sudo apt install php libapache2-mod-php php-mysql -y
+
 php -v
 
 3. Configure Apache to Prioritize PHP
@@ -48,11 +54,13 @@ php -v
 Edit the directory configuration file:
 
 bash
+
 sudo nano /etc/apache2/mods-enabled/dir.conf
 
 Move index.php to the front of the list, then restart Apache:
 
 bash
+
 sudo systemctl restart apache2
 
 4. Test PHP
@@ -60,6 +68,7 @@ sudo systemctl restart apache2
 Create a test file:
 
 bash
+
 sudo nano /var/www/html/test.php
 
 Insert:
@@ -81,9 +90,13 @@ sudo rm /var/www/html/test.php
 5. Install MariaDB
 
 bash
+
 sudo apt install mariadb-server mariadb-client -y
+
 sudo systemctl start mariadb
+
 sudo systemctl enable mariadb
+
 mysql --version
 
 7. Secure the SQL Installation
@@ -91,6 +104,7 @@ mysql --version
 Run the security script:
 
 bash
+
 sudo mysql_secure_installation
 
 Recommended responses:
@@ -110,11 +124,13 @@ Reload privileges: Yes
 Login:
 
 bash
+
 sudo mysql -u root -p
 
 Create a database and table:
 
 sql
+
 CREATE DATABASE contacts;
 USE contacts;
 
