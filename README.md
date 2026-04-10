@@ -1,0 +1,2 @@
+# LAMP-Stack-Tutorial
+This project demonstrates the full deployment of a LAMP stack on a newly commissioned Linux server.         It walks through updating the system, installing and configuring Apache, PHP, and MariaDB, and         validating each component along the way. The process mirrors real‑world server provisioning and         highlights secure configuration practices such as public key authentication and SQL hardening.
