@@ -1,148 +1,27 @@
+### LAMP Stack Deployment Guide
+
+This project provides a structured walkthrough for deploying a complete LAMP stack (Linux, Apache, MariaDB, and PHP) on a newly commissioned Ubuntu server. The guide follows a methodical, operations‑focused approach designed to reflect real‑world server provisioning and web‑application hosting practices.
+
 📌 Project Overview
 
-This guide demonstrates how to:
+The process begins by preparing the server with routine updates to ensure a stable foundation. It then walks through installing Apache as the primary web server, followed by PHP to enable dynamic content processing. Once the web layer is in place, the guide introduces MariaDB as the database component, including steps to secure the SQL environment and configure it for safe use.
 
-- Prepare a fresh Linux server
+After the core stack is deployed, the project demonstrates how to validate PHP functionality, confirm Apache’s ability to serve dynamic pages, and create a simple database with sample records. These steps ensure that all components of the LAMP stack are communicating correctly and functioning as an integrated system.
 
-- Install and configure Apache
+🎯 Key Learning Outcomes
 
-- Install PHP and enable it within Apache
+- Understanding the purpose and structure of a LAMP stack
 
-- Deploy and secure MariaDB
+- Preparing a Linux server for web application deployment
 
-- Create a sample database and table
+- Installing and configuring Apache to serve dynamic content
 
-- Validate the full LAMP stack end‑to‑end
+- Deploying PHP and verifying its integration with the web server
 
-The process is based on a structured Method of Procedure (MOP) originally created for academic and operational use.
+- Installing, securing, and interacting with a MariaDB database
 
-🛠️ Prerequisites
+- Creating and querying a simple database to validate end‑to‑end functionality
 
-Before starting, ensure you have:
+📝 Notes & Considerations
 
-- A Linux server (Ubuntu/Debian recommended)
-
-- Root or sudo access
-
-- Basic familiarity with the terminal
-
-- SSH access (public key authentication recommended)
-
-🚀 Installation Steps
-
-1. Update the Server
-
-```bash```
-
-```sudo su root```
-
-```apt-get update```
-
-```apt-get upgrade```
-
-```reboot```
-
-2. Install PHP
-
-```bash```
-
-```sudo apt install php libapache2-mod-php php-mysql -y```
-
-```php -v```
-
-3. Configure Apache to Prioritize PHP
-
-Edit the directory configuration file:
-
-```bash```
-
-```sudo nano /etc/apache2/mods-enabled/dir.conf```
-
-Move index.php to the front of the list, then restart Apache:
-
-```bash```
-
-```sudo systemctl restart apache2```
-
-4. Test PHP
-
-Create a test file:
-
-```bash```
-
-```sudo nano /var/www/html/test.php```
-
-Insert:
-
-php
-
-<?php
-phpinfo();
-?>
-
-Visit:
-
-http://<your-server-ip>/test.php
-
-Delete the test file afterward:
-
-```bash```
-```sudo rm /var/www/html/test.php```
-
-5. Install MariaDB
-
-```bash```
-
-```sudo apt install mariadb-server mariadb-client -y```
-
-```sudo systemctl start mariadb```
-
-```sudo systemctl enable mariadb```
-
-```mysql --version```
-
-7. Secure the SQL Installation
-
-Run the security script:
-
-bash
-
-```sudo mysql_secure_installation```
-
-Recommended responses:
-
-Set root password: Yes
-
-Remove anonymous users: Yes
-
-Disallow remote root login: No
-
-Remove test database: Yes
-
-Reload privileges: Yes
-
-7. Create a Database
-
-Login:
-
-```bash```
-
-```sudo mysql -u root -p```
-
-Create a database and table:
-
-sql
-
-CREATE DATABASE contacts;
-USE contacts;
-
-CREATE TABLE directory (
-    PersonID INT NOT NULL,
-    FirstName VARCHAR(55),
-    LastName VARCHAR(55)
-);
-
-INSERT INTO directory (PersonID, FirstName, LastName)
-VALUES (1, 'Alice', 'Clampett');
-
-SELECT * FROM directory;
+The project highlights the importance of securing database services and validating each component as it is installed. It also reinforces the value of structured, repeatable deployment processes — a core skill in both system administration and web hosting environments. While the example database is intentionally simple, the workflow mirrors the same steps used when preparing production‑grade application environments.
