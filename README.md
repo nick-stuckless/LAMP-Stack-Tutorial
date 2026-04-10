@@ -32,49 +32,50 @@ Before starting, ensure you have:
 
 1. Update the Server
 
-bash
+```bash```
 
-sudo su root
+```sudo su root```
 
-apt-get update
+```apt-get update```
 
-apt-get upgrade
+```apt-get upgrade```
 
-reboot
+```reboot```
 
 2. Install PHP
 
-bash
+```bash```
 
-sudo apt install php libapache2-mod-php php-mysql -y
+```sudo apt install php libapache2-mod-php php-mysql -y```
 
-php -v
+```php -v```
 
 3. Configure Apache to Prioritize PHP
 
 Edit the directory configuration file:
 
-bash
+```bash```
 
-sudo nano /etc/apache2/mods-enabled/dir.conf
+```sudo nano /etc/apache2/mods-enabled/dir.conf```
 
 Move index.php to the front of the list, then restart Apache:
 
-bash
+```bash```
 
-sudo systemctl restart apache2
+```sudo systemctl restart apache2```
 
 4. Test PHP
 
 Create a test file:
 
-bash
+```bash```
 
-sudo nano /var/www/html/test.php
+```sudo nano /var/www/html/test.php```
 
 Insert:
 
 php
+
 <?php
 phpinfo();
 ?>
@@ -85,20 +86,20 @@ http://<your-server-ip>/test.php
 
 Delete the test file afterward:
 
-bash
-sudo rm /var/www/html/test.php
+```bash```
+```sudo rm /var/www/html/test.php```
 
 5. Install MariaDB
 
-bash
+```bash```
 
-sudo apt install mariadb-server mariadb-client -y
+```sudo apt install mariadb-server mariadb-client -y```
 
-sudo systemctl start mariadb
+```sudo systemctl start mariadb```
 
-sudo systemctl enable mariadb
+```sudo systemctl enable mariadb```
 
-mysql --version
+```mysql --version```
 
 7. Secure the SQL Installation
 
@@ -106,7 +107,7 @@ Run the security script:
 
 bash
 
-sudo mysql_secure_installation
+```sudo mysql_secure_installation```
 
 Recommended responses:
 
@@ -124,9 +125,9 @@ Reload privileges: Yes
 
 Login:
 
-bash
+```bash```
 
-sudo mysql -u root -p
+```sudo mysql -u root -p```
 
 Create a database and table:
 
